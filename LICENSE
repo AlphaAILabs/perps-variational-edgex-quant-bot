@@ -1,0 +1,44 @@
+GNU AFFERO GENERAL PUBLIC LICENSE
+Version 3, 19 November 2007
+
+Copyright (c) 2025 AlphaAI Labs
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+ADDITIONAL TERMS:
+
+Network Use Disclosure: If you run a modified version of this software 
+on a server and allow users to interact with it remotely through a 
+computer network, you must provide the complete source code of your 
+modified version to those users.
+
+Commercial Use Restriction: Any commercial use of this software requires 
+explicit written permission from AlphaAI Labs. For commercial licensing 
+inquiries, please contact: contact@alphalabs.app
+
+Attribution Requirement: You must retain all copyright notices and 
+prominently display "Powered by AlphaAI Labs" in any application or 
+service that uses this software.
+
+Patent Grant: AlphaAI Labs grants you a perpetual, worldwide, non-exclusive,
+no-charge, royalty-free, irrevocable patent license to use the software,
+subject to the terms of this license.
+
+DISCLAIMER OF LIABILITY:
+IN NO EVENT SHALL ALPHAAI LABS BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES WHATSOEVER
+ARISING OUT OF THE USE OF OR INABILITY TO USE THIS SOFTWARE.
+
+For the complete GNU Affero General Public License v3.0 text, see:
+https://www.gnu.org/licenses/agpl-3.0.txt 
