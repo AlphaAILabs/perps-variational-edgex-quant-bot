@@ -2,7 +2,7 @@
 
 🤖 **AlphaAI Labs 开发的量化交易机器人 Docker 镜像**
 
-一个基于 Docker 容器化部署的高性能永续合约量化交易系统，支持多交易所接入和策略自动化执行。
+一个基于 Docker 容器化部署的中低频永续合约量化交易系统，支持策略自动化执行。
 
 ## ✨ 特性
 
@@ -53,7 +53,7 @@ docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env ghcr.io/alphaailabs/perps-va
 docker-compose ps
 
 # 查看日志
-docker-compose logs -f
+docker-compose logs -f your_container -n 100
 
 # 停止服务
 docker-compose down
@@ -78,17 +78,42 @@ docker-compose down
 主要配置项在 `.env` 文件中：
 
 ```env
-# 交易所配置
-EXCHANGE_API_KEY=your_api_key
-EXCHANGE_SECRET_KEY=your_secret_key
+#ACCOUNT On variational or edgeX
+ACCOUNT_ADDRESS=
 
-# 策略配置
-STRATEGY_TYPE=grid_trading
-RISK_LEVEL=medium
+#FANWAN NOTIFY [optional]
+FANWAN_TOKEN=
 
-# 服务配置
-PORT=3000
-LOG_LEVEL=info
+# Variational Client Configuration
+# VARIATIONAL_TOKEN=
+VARIATIONAL_TOKEN=
+VARIATIONAL_BASE_URL=
+
+# EdgeX Client Configuration
+EDGEX_API_KEY=
+EDGEX_PASS_PHRASE=
+EDGEX_BASE_URL=
+EDGEX_SECRET=
+EDGEX_L2_PRIVATE_KEY=
+EDGEX_ACCOUNT_ID=
+
+# Trading Configuration
+# BTC 下单必须是 0.001 的倍数, 且大于 0.001
+BTC_QTY_STEP=
+# ETH 下单必须是 0.01 的倍数，且大于 0.01
+ETH_QTY_STEP=
+# 资金使用率
+MAX_PORTFOLIO_MM=0.5
+MAX_PORTFOLIO_IM=0.8
+OPEN_POSITION_MARKET_PRICE_DIFF_BTC=100
+OPEN_POSITION_MARKET_PRICE_DIFF_ETH=5
+CLOSE_POSITION_ENTRY_PRICE_DIFF_BTC=500
+CLOSE_POSITION_ENTRY_PRICE_DIFF_ETH=15
+# 杠杆必须和前端界面设置的保持一致
+VARIATIONAL_LEVERAGE_BTC=20
+VARIATIONAL_LEVERAGE_ETH=10
+EDGEX_LEVERAGE_BTC=20
+EDGEX_LEVERAGE_ETH=10
 ```
 
 ## 📊 支持的平台
@@ -103,15 +128,11 @@ LOG_LEVEL=info
 ✅ Intel x86_64 处理器  
 ✅ AMD x86_64 处理器  
 
-### 虚拟化环境
-✅ VMware  
-✅ VirtualBox  
 
 ## 📞 技术支持
 
 - 📧 **邮箱**: contact@alphalabs.app
 - 🐛 **问题反馈**: [GitHub Issues](https://github.com/AlphaAILabs/perps-variational-edgex-quant-bot/issues)
-- 📚 **文档**: [Wiki](https://github.com/AlphaAILabs/perps-variational-edgex-quant-bot/wiki)
 
 ## ⚠️ 风险提示
 
@@ -121,7 +142,7 @@ LOG_LEVEL=info
 
 ## 📄 许可证
 
-本项目采用 [MIT License](LICENSE) 许可证。
+本项目采用 [GNU AFFERO GENERAL PUBLIC LICENSE](LICENSE) 许可证。
 
 ---
 
