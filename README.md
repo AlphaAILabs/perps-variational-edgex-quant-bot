@@ -64,6 +64,16 @@ vim .env # 修改目标的参数配置
 docker restart perps-variational-edgex-bot # 重启 Bot 服务
 ```
 
+### 升级 Bot
+```shell
+cd perps-variational-edgex-quant-bot
+vim .env # 根据最新 .env.example 去修改最新的配置参数
+
+docker stop perps-variational-edgex-bot && docker rm -f perps-variational-edgex-bot
+
+docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edgex-bot ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.1 # 将在后台服务自动运行服务
+# v1.0.1 为最新的代码版本
+```
 
 ## 📦 Docker 镜像
 
