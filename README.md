@@ -21,26 +21,47 @@
 - 推荐 25GB+ 存储空间
 
 ### 一键安装 Docker 环境
+| 下述命令，请逐行执行
 
 ```bash
-# 克隆仓库
-git clone https://github.com/AlphaAILabs/perps-variational-edgex-quant-bot.git
-cd perps-variational-edgex-quant-bot
+git clone https://github.com/AlphaAILabs/perps-variational-edgex-quant-bot.git  # 克隆仓库
+cd perps-variational-edgex-quant-bot  # 进入到工程目录
 
-# 自动安装 Docker 和 Docker Compose
-chmod +x init_env.sh
-sudo ./init_env.sh
+# 安装 Docker 和 Docker Compose
+sudo apt update
+arch=`dpkg --print-architecture`
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=$arch] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install -y docker-ce
+sudo systemctl status docker
+sudo groupadd -f docker
+sudo usermod -aG docker $USER
+newgrp docker
+groups
+sudo curl -L "https://github.com/docker/compose/releases/download/v2.2.3/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+
 ```
 
 ### 配置和运行
 
 ```bash
-# 配置环境变量
-cp .env.example .env
+cp .env.example .env # 配置环境变量
 vim .env
 
-# 或者使用 Docker 直接运行
-docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.0
+docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edgex-bot ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.1 # 将在后台服务自动运行服务
+
+# 查看服务运行日志
+docker logs -f perps-variational-edgex-bot -n 100
+```
+
+### 更新参数
+```shell
+cd perps-variational-edgex-quant-bot
+
+vim .env # 修改目标的参数配置
+docker restart perps-variational-edgex-bot # 重启 Bot 服务
 ```
 
 
@@ -66,18 +87,17 @@ docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env ghcr.io/alphaailabs/perps-va
 #ACCOUNT On variational or edgeX
 ACCOUNT_ADDRESS=
 
-#FANWAN NOTIFY [optional]
-FANWAN_TOKEN=
+#AlphaLabs Watchtower [optional]
+ALPHALABS_KEY=
 
 # Variational Client Configuration
-# VARIATIONAL_TOKEN=
 VARIATIONAL_TOKEN=
-VARIATIONAL_BASE_URL=
+VARIATIONAL_BASE_URL=http://localhost:3000
 
 # EdgeX Client Configuration
 EDGEX_API_KEY=
 EDGEX_PASS_PHRASE=
-EDGEX_BASE_URL=
+EDGEX_BASE_URL=https://pro.edgex.exchange
 EDGEX_SECRET=
 EDGEX_L2_PRIVATE_KEY=
 EDGEX_ACCOUNT_ID=
@@ -117,6 +137,7 @@ EDGEX_LEVERAGE_ETH=10
 ## 📞 技术支持
 
 - 📧 **邮箱**: contact@alphalabs.app
+-    **DC**: [Discord] (https://discord.com/invite/hG2M26Gp )
 - 🐛 **问题反馈**: [GitHub Issues](https://github.com/AlphaAILabs/perps-variational-edgex-quant-bot/issues)
 
 ## ⚠️ 风险提示
