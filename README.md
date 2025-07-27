@@ -39,25 +39,10 @@ sudo ./init_env.sh
 cp .env.example .env
 vim .env
 
-# 使用 Docker Compose 运行（推荐）
-docker-compose up -d
-
 # 或者使用 Docker 直接运行
 docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.0
 ```
 
-### 监控和管理
-
-```bash
-# 查看运行状态
-docker-compose ps
-
-# 查看日志
-docker-compose logs -f your_container -n 100
-
-# 停止服务
-docker-compose down
-```
 
 ## 📦 Docker 镜像
 
