@@ -50,7 +50,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 cp .env.example .env # 配置环境变量
 vim .env
 
-docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edgex-bot ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.2 # 将在后台服务自动运行服务
+docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edgex-bot ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.4 # 将在后台服务自动运行服务
 
 # 查看服务运行日志
 docker logs -f perps-variational-edgex-bot -n 100
@@ -71,8 +71,8 @@ vim .env # 根据最新 .env.example 去修改最新的配置参数
 
 docker stop perps-variational-edgex-bot && docker rm -f perps-variational-edgex-bot
 
-docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edgex-bot ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.2 # 将在后台服务自动运行服务
-# v1.0.2 为最新的代码版本
+docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edgex-bot ghcr.io/alphaailabs/perps-variational-edgex-quant-bot:v1.0.4 # 将在后台服务自动运行服务
+# v1.0.4 为最新的代码版本
 ```
 
 ## 📦 Docker 镜像
@@ -86,7 +86,7 @@ docker run -d -p 3000:3000 -v $(pwd)/.env:/app/.env --name perps-variational-edg
 
 | 标签 | 描述 | 稳定性 |
 |------|------|--------|
-| `v1.0.2` | 稳定版本 | 🟢 推荐 |
+| `v1.0.4` | 稳定版本 | 🟢 推荐 |
 | `latest` | 最新版本 | 🟡 开发 |
 
 ## 🔧 配置说明
